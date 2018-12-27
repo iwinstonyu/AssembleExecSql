@@ -47,7 +47,8 @@ if %ERRORLEVEL% NEQ 0 (
 echo ===================================
 echo.
 
-echo Execute sql file
+echo Please confirm to execute sql file
+pause
 "%mysql_exe%" -h%host% -u%user% -p%pwd% -P%port% -e"use %db%; set names utf8; select now(); source %out_path%; select 'End %out_path%'" -f
 echo ===================================
 echo.
