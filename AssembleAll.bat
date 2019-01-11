@@ -6,7 +6,7 @@ set "user=lp"
 set "pwd=123"
 set "port=3308"
 set "db=lobby_slg_qa1"
-set "in_path=../2018.12.27"
+set "in_path=../2019.1.10"
 set "out_path=%in_path%.sql"
 set "log_path=%in_path%.log"
 
@@ -44,6 +44,10 @@ if %ERRORLEVEL% NEQ 0 (
 	echo Fail assemble sql files
 	goto end
 )
+echo ===================================
+echo.
+
+echo DB:%host% : %port% : %db%
 echo ===================================
 echo.
 
