@@ -10,7 +10,7 @@ in_path = None
 out_path = None
 
 def print_usage():
-	print 'Usage: -i[input path] -o[output path]'
+	print('Usage: -i[input path] -o[output path]')
 	
 opts,args = getopt.getopt(sys.argv[1:], 'i:o:', ['help'])
 for name, value in opts:
@@ -38,12 +38,12 @@ for sql_file_path in glob.glob(glob_path):
 	sql_file_name = os.path.basename(sql_file_path)
 	print("Reading file: {}".format(sql_file_name))
 	f_sql = open(sql_file_path, 'rb')
-	f_out.write("#=========================================\r\n")
-	f_out.write("#{}\r\n".format(sql_file_name))
-	f_out.write("#=========================================\r\n")
-	f_out.write("select '{}';\r\n".format(sql_file_name))
+	f_out.write("#=========================================\r\n".encode())
+	f_out.write("#{}\r\n".format(sql_file_name).encode())
+	f_out.write("#=========================================\r\n".encode())
+	f_out.write("select '{}';\r\n".format(sql_file_name).encode())
 	f_out.write(f_sql.read())
-	f_out.write("\r\n\r\n")
+	f_out.write("\r\n\r\n".encode())
 	f_sql.close()
 	
 f_out.close()

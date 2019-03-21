@@ -1,12 +1,14 @@
 @echo off
 
+chcp 936
+
 set "mysql_exe=D:/Program Files (x86)/MySQL/MySQL Server 5.7/bin/mysql"
 set "host=172.24.140.38"
 set "user=lp"
 set "pwd=123"
 set "port=3308"
 set "db=lobby_slg_qa1"
-set "in_path=../2019.1.10"
+set "in_path=../2019.3.21"
 set "out_path=%in_path%.sql"
 set "log_path=%in_path%.log"
 
