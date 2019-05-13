@@ -2,13 +2,35 @@
 
 chcp 936
 
-set "mysql_exe=D:/Program Files (x86)/MySQL/MySQL Server 5.7/bin/mysql"
+set "mysql_exe=C:/Program Files/MySQL/MySQL Server 5.7/bin/mysql"
 set "host=172.24.140.38"
 set "user=lp"
 set "pwd=123"
 set "port=3308"
 set "db=lobby_slg_qa1"
-set "in_path=../2019.3.21"
+
+echo Update from svn
+svn update ..\\
+if %ERRORLEVEL% NEQ 0 (
+	echo Fail update from svn
+	goto end
+)
+echo ===================================
+echo.
+
+set in_path=""
+for /f %%i in ('dir /b /ad /o-d ..\\') do (
+	set in_path=%%i
+	goto end_search_input_path
+)
+
+:end_search_input_path
+if %in_path%=="" (
+	echo Fail find input path
+	goto end
+)
+
+set "in_path=../%in_path%"
 set "out_path=%in_path%.sql"
 set "log_path=%in_path%.log"
 
@@ -28,15 +50,6 @@ echo Clear old files
 if exist "%out_path_bslash%" del "%out_path_bslash%"
 if exist "%log_path_bslash%" del "%log_path_bslash%"
 timeout 1
-echo ===================================
-echo.
-
-echo Update from svn
-svn update %in_path%
-if %ERRORLEVEL% NEQ 0 (
-	echo Fail update from svn
-	goto end
-)
 echo ===================================
 echo.
 
